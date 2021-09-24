@@ -20,6 +20,18 @@ variable "records" {
   default = []
 }
 
+variable "aliases" {
+  description = "AWS Route53 zone aliases"
+  type = list(object({
+    name                   = optional(string)
+    type                   = optional(string)
+    evaluate_target_health = optional(bool)
+    alias_name             = string
+    zone_id                = string
+  }))
+  default = []
+}
+
 variable "tags" {
   description = "A map of tags for the zone"
   type        = map(string)
