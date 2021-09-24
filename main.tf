@@ -18,5 +18,5 @@ resource "aws_route53_record" "records" {
   ttl     = try(var.records[count.index].ttl, 300)
   // To specify a single record value longer than 255 characters such as a TXT record for DKIM,
   // add \"\" inside the Terraform configuration string (e.g. "first255characters\"\"morecharacters")
-  records = var.records[count.index].records
+  records = try(var.records[count.index].records, [])
 }
