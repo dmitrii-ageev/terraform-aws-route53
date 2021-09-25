@@ -32,6 +32,6 @@ resource "aws_route53_record" "aliases" {
   alias {
     evaluate_target_health = var.aliases[count.index].evaluate_target_health != null ? var.aliases[count.index].type : false
     name                   = var.aliases[count.index].alias_name
-    zone_id                = var.aliases[count.index].zone_id
+    zone_id                = var.aliases[count.index].zone_id != null ? var.aliases[count.index].zone_id : "Z2FDTNDATAQYW2"
   }
 }
